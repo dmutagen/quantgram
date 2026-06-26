@@ -1,0 +1,12 @@
+{
+  "name": "quantgram",
+  "version": "1.0.0",
+  "description": "Quantgram - Custom Telegram Client for PC",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "keywords": [],
+  "author": "Antigravity Pair Developer",
+  "license": "MIT"
+}

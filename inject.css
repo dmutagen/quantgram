@@ -1,0 +1,186 @@
+/* Inject CSS for Telegram Web (Web A & Web K) - Quantgram Branding */
+
+:root {
+  /* Quantgram Theme Variables (Synced from Preload JS) */
+  --quantgram-accent: #a8c7fa;
+  --quantgram-accent-glow: rgba(168, 199, 250, 0.15);
+}
+
+/* Base Overrides for Web Client */
+html, body, :root {
+  /* Accent Colors */
+  --color-primary: var(--quantgram-accent) !important;
+  --color-primary-shade: var(--quantgram-accent) !important;
+  --color-primary-opacity: rgba(168, 199, 250, 0.12) !important;
+  --color-accent: var(--quantgram-accent) !important;
+  --color-accent-own: var(--quantgram-accent) !important;
+  --color-links: var(--quantgram-accent) !important;
+  --color-border: rgba(168, 199, 250, 0.15) !important;
+  
+  /* Text and Selection */
+  --color-text-accent: var(--quantgram-accent) !important;
+  --color-item-active: var(--quantgram-accent) !important;
+  
+  /* Custom Scrollbar Styles */
+  --color-scrollbar-thumb: var(--quantgram-accent) !important;
+  --color-scrollbar-thumb-hover: var(--quantgram-accent) !important;
+}
+
+/* Force Cyber Dark Backgrounds matching Material 3 spec */
+html, body, 
+#root, 
+.Main, 
+.LeftColumn, 
+.MiddleColumn,
+.RightColumn,
+.Settings,
+.ChatList,
+.MessageList,
+.messages-layout,
+#left-column,
+#middle-column,
+#right-column,
+.sidebar-container {
+  background-color: #111014 !important;
+  background: #111014 !important;
+  color: #e6e1e5 !important;
+}
+
+/* Glassmorphism for Panels and Headers */
+.MiddleHeader,
+.chat-info,
+.LeftHeader,
+.LeftSearch,
+.search-input-wrapper {
+  background-color: rgba(28, 27, 31, 0.8) !important;
+  backdrop-filter: blur(16px) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Chat Item States */
+.chat-item.active,
+.peer-item.active,
+.ListItem-button.active,
+.chat-item:hover,
+.ListItem-button:hover {
+  background-color: rgba(168, 199, 250, 0.08) !important;
+  border-left: 3px solid var(--quantgram-accent) !important;
+}
+
+/* Custom Message Bubble Overrides */
+.Message.own .message-content,
+.message-bubble.own {
+  background-color: rgba(168, 199, 250, 0.15) !important;
+  border: 1px solid rgba(168, 199, 250, 0.25) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+  color: #fff !important;
+}
+
+/* Input Fields Overrides */
+.message-input-wrapper,
+.MessageInput,
+.search-input {
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 12px !important;
+  background-color: rgba(0, 0, 0, 0.25) !important;
+}
+
+.message-input-wrapper:focus-within,
+.MessageInput:focus-within,
+.search-input:focus {
+  border-color: var(--quantgram-accent) !important;
+  box-shadow: 0 0 8px var(--quantgram-accent-glow) !important;
+}
+
+/* Hide Official Telegram Logo in Auth pages */
+.login-header svg, 
+.auth-logo svg,
+.logo-wrapper svg,
+.qr-container svg {
+  display: none !important;
+}
+
+/* Render Custom Quantum Logo Container in Auth screens */
+.login-header::before, 
+.auth-logo::before,
+.qr-container::before {
+  content: "Q";
+  font-family: 'Roboto', 'Outfit', sans-serif;
+  font-weight: 500;
+  font-size: 38px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 20px auto;
+  border-radius: 24px;
+  background: linear-gradient(135deg, var(--quantgram-accent) 0%, #1c1b1f 100%);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  animation: float-quantum-logo 3s ease-in-out infinite;
+}
+
+/* QR Code centering adjustments if applicable */
+.qr-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Floating animation for logo */
+@keyframes float-quantum-logo {
+  0% {
+    transform: translateY(0px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  }
+  50% {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 24px rgba(168, 199, 250, 0.15);
+  }
+  100% {
+    transform: translateY(0px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* Primary Button Styling */
+.btn-primary, 
+.Button.confirm, 
+.Button.primary {
+  background-color: var(--quantgram-accent) !important;
+  color: #1c1b1f !important;
+  font-weight: 500 !important;
+  border-radius: 20px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+  transition: all 0.2s ease !important;
+}
+
+.btn-primary:hover, 
+.Button.confirm:hover, 
+.Button.primary:hover {
+  filter: brightness(1.1) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Custom CSS Scrollbars for Webview */
+::-webkit-scrollbar {
+  width: 5px !important;
+  height: 5px !important;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12) !important;
+  border-radius: 4px !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25) !important;
+}

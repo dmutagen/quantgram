@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quantgram</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Custom Title Bar -->
+  <header class="title-bar">
+    <div class="drag-region">
+      <img src="assets/logo.jpg" alt="Quantgram Logo" class="title-logo">
+      <span class="title-text">QUANTGRAM</span>
+    </div>
+    <div class="window-controls">
+      <button id="btn-minimize" class="control-btn" title="Minimize">
+        <svg viewBox="0 0 10 1"><rect width="10" height="1" fill="currentColor"/></svg>
+      </button>
+      <button id="btn-maximize" class="control-btn" title="Maximize">
+        <svg viewBox="0 0 10 10"><rect width="8" height="8" x="1" y="1" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>
+      </button>
+      <button id="btn-close" class="control-btn close-btn" title="Close">
+        <svg viewBox="0 0 10 10"><path d="M1 1 L9 9 M9 1 L1 9" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Application Wrapper -->
+  <div class="app-container">
+    
+    <!-- Sidebar -->
+    <nav class="sidebar">
+      <div class="nav-items">
+        <button id="nav-chats" class="nav-btn active" title="Chats">
+          <svg class="nav-icon" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2zm4-6H6V6h12v2z" fill="currentColor"/></svg>
+          <span class="nav-label">Chats</span>
+        </button>
+        <button id="nav-themes" class="nav-btn" title="Themes & Branding">
+          <svg class="nav-icon" viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L4.35 19.4c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0l1.9-1.9C9.17 19.58 10.53 20 12 20c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 15c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z" fill="currentColor"/></svg>
+          <span class="nav-label">Branding</span>
+        </button>
+        <button id="nav-system" class="nav-btn" title="Diagnostics & System">
+          <svg class="nav-icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H7c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.04-.42 1.99-1.07 2.75z" fill="currentColor"/></svg>
+          <span class="nav-label">Info</span>
+        </button>
+      </div>
+      
+      <div class="sidebar-footer">
+        <div class="logo-small">
+          <img src="assets/logo.jpg" alt="Quantgram Mini Logo">
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Workspace -->
+    <main class="workspace">
+      
+      <!-- Chats Panel (Webview Container) -->
+      <div id="panel-chats" class="workspace-panel active">
+        <webview id="tgWebview" webpreferences="contextIsolation=false"></webview>
+      </div>
+
+      <!-- Themes Panel -->
+      <div id="panel-themes" class="workspace-panel">
+        <div class="panel-header">
+          <h2>QUANTGRAM CUSTOMIZATION</h2>
+          <p>Personalize your client interface and branding options.</p>
+        </div>
+        <div class="settings-grid">
+          <div class="settings-card">
+            <h3>Visual Palette</h3>
+            <p>Select your neon accent highlight theme:</p>
+            <div class="theme-options">
+              <button class="theme-opt-btn active" data-theme="teal-tech" style="--accent: #a8c7fa;">Material Blue</button>
+              <button class="theme-opt-btn" data-theme="quantum-cyan" style="--accent: #06b6d4;">Quantum Cyan</button>
+              <button class="theme-opt-btn" data-theme="plasma-magenta" style="--accent: #ec4899;">Plasma Pink</button>
+              <button class="theme-opt-btn" data-theme="emerald-glow" style="--accent: #10b981;">Emerald Glow</button>
+            </div>
+          </div>
+          
+          <div class="settings-card">
+            <h3>Branding Injection</h3>
+            <p>Customize how Telegram Web is rebranded:</p>
+            <div class="toggle-group">
+              <label class="switch-container">
+                <input type="checkbox" id="chk-rename-text" checked>
+                <span class="switch-slider"></span>
+                <span class="switch-label">Rename "Telegram" to "Quantgram" in UI</span>
+              </label>
+              <label class="switch-container">
+                <input type="checkbox" id="chk-custom-css" checked>
+                <span class="switch-slider"></span>
+                <span class="switch-label">Apply Quantum Cyber CSS injection</span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- System Panel -->
+      <div id="panel-system" class="workspace-panel">
+        <div class="panel-header">
+          <h2>SYSTEM DIAGNOSTICS</h2>
+          <p>Manage application version, workspace endpoints, and clear local caches.</p>
+        </div>
+        <div class="settings-grid">
+          <div class="settings-card">
+            <h3>Client Endpoint</h3>
+            <p>Select the underlying Telegram Web client build:</p>
+            <div class="select-group">
+              <button id="btn-endpoint-a" class="endpoint-btn active" data-url="https://web.telegram.org/a/">Telegram Web A (React)</button>
+              <button id="btn-endpoint-k" class="endpoint-btn" data-url="https://web.telegram.org/k/">Telegram Web K (Kotlin-JS)</button>
+            </div>
+          </div>
+
+          <div class="settings-card">
+            <h3>Diagnostics & Control</h3>
+            <div class="system-stats">
+              <div class="stat-row">
+                <span>App Engine:</span>
+                <span>Electron v34.0.0</span>
+              </div>
+              <div class="stat-row">
+                <span>Platform:</span>
+                <span id="stat-platform">Linux</span>
+              </div>
+              <div class="stat-row">
+                <span>Core:</span>
+                <span>Chromium 120.x</span>
+              </div>
+            </div>
+            <div class="action-buttons">
+              <button id="btn-dev-tools" class="action-btn dev-btn">Inspect Webview</button>
+              <button id="btn-clear-cache" class="action-btn reset-btn">Clear Storage & Reload</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- App Splash Screen -->
+  <div id="splash-screen" class="splash-overlay">
+    <div class="splash-content">
+      <div class="splash-logo-container">
+        <img src="assets/logo.jpg" alt="Quantgram Logo" class="splash-logo">
+        <div class="splash-glow"></div>
+      </div>
+      <h1 class="splash-title">QUANTGRAM</h1>
+      <p class="splash-subtitle">Quantum secure messaging workspace...</p>
+      <div class="progress-bar-container">
+        <div id="splash-progress" class="progress-bar"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Renderer Script -->
+  <script>
+    const { ipcRenderer } = require('electron');
+    const path = require('path');
+
+    // Title Bar Window Control Actions
+    document.getElementById('btn-minimize').addEventListener('click', () => {
+      ipcRenderer.send('window-minimize');
+    });
+    document.getElementById('btn-maximize').addEventListener('click', () => {
+      ipcRenderer.send('window-maximize');
+    });
+    document.getElementById('btn-close').addEventListener('click', () => {
+      ipcRenderer.send('window-close');
+    });
+
+    // Navigation and Panels Switching
+    const navButtons = {
+      chats: document.getElementById('nav-chats'),
+      themes: document.getElementById('nav-themes'),
+      system: document.getElementById('nav-system')
+    };
+
+    const panels = {
+      chats: document.getElementById('panel-chats'),
+      themes: document.getElementById('panel-themes'),
+      system: document.getElementById('panel-system')
+    };
+
+    Object.keys(navButtons).forEach(key => {
+      navButtons[key].addEventListener('click', () => {
+        // Toggle Active Classes for buttons
+        Object.values(navButtons).forEach(btn => btn.classList.remove('active'));
+        navButtons[key].classList.add('active');
+
+        // Toggle Active Classes for panels
+        Object.values(panels).forEach(panel => panel.classList.remove('active'));
+        panels[key].classList.add('active');
+      });
+    });
+
+    // Webview Setup & Controls
+    const webview = document.getElementById('tgWebview');
+    const splashScreen = document.getElementById('splash-screen');
+    const splashProgress = document.getElementById('splash-progress');
+    const platformStat = document.getElementById('stat-platform');
+
+    // Set Platform Name
+    platformStat.textContent = process.platform.charAt(0).toUpperCase() + process.platform.slice(1);
+
+    // Initialize Webview Attributes dynamically to avoid relative path resolution bugs in Electron
+    const preloadPath = path.join(__dirname, 'preload.js');
+    webview.setAttribute('preload', preloadPath);
+    webview.setAttribute('src', 'https://web.telegram.org/a/');
+
+    // Simulate Splash Progress Loading
+    let progressVal = 10;
+    const progressInterval = setInterval(() => {
+      if (progressVal < 90) {
+        progressVal += Math.random() * 15;
+        if (progressVal > 90) progressVal = 90;
+        splashProgress.style.width = `${progressVal}%`;
+      }
+    }, 200);
+
+    // Handle Finish Loading of webview
+    webview.addEventListener('did-stop-loading', () => {
+      clearInterval(progressInterval);
+      splashProgress.style.width = '100%';
+      setTimeout(() => {
+        splashScreen.classList.add('fade-out');
+        setTimeout(() => {
+          splashScreen.style.display = 'none';
+        }, 600);
+      }, 500);
+    });
+
+    webview.addEventListener('did-fail-load', (e) => {
+      console.error('Failed to load page in webview:', e);
+      splashProgress.style.backgroundColor = '#ef4444';
+      document.querySelector('.splash-subtitle').textContent = 'Connection timeout. Retrying...';
+      setTimeout(() => {
+        webview.reload();
+      }, 3000);
+    });
+
+    // Theme Customizer Logic
+    const themeButtons = document.querySelectorAll('.theme-opt-btn');
+    themeButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        themeButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const themeName = btn.getAttribute('data-theme');
+        document.body.className = themeName;
+        // Save Theme
+        localStorage.setItem('quantgram-theme', themeName);
+        // Send theme update to webview
+        sendThemeToWebview(themeName);
+      });
+    });
+
+    // Load Saved Theme
+    const savedTheme = localStorage.getItem('quantgram-theme') || 'teal-tech';
+    document.body.className = savedTheme;
+    const activeThemeBtn = document.querySelector(`.theme-opt-btn[data-theme="${savedTheme}"]`);
+    if (activeThemeBtn) {
+      themeButtons.forEach(b => b.classList.remove('active'));
+      activeThemeBtn.classList.add('active');
+    }
+
+    function sendThemeToWebview(theme) {
+      // IPC channel to notify webview of configuration changes
+      webview.send('theme-changed', theme);
+    }
+
+    // Toggle features
+    const chkRename = document.getElementById('chk-rename-text');
+    const chkCustomCss = document.getElementById('chk-custom-css');
+
+    const updateConfig = () => {
+      webview.send('config-changed', {
+        renameText: chkRename.checked,
+        customCss: chkCustomCss.checked
+      });
+      localStorage.setItem('quantgram-rename', chkRename.checked);
+      localStorage.setItem('quantgram-customcss', chkCustomCss.checked);
+    };
+
+    chkRename.addEventListener('change', updateConfig);
+    chkCustomCss.addEventListener('change', updateConfig);
+
+    // Load saved configurations
+    if (localStorage.getItem('quantgram-rename') !== null) {
+      chkRename.checked = localStorage.getItem('quantgram-rename') === 'true';
+    }
+    if (localStorage.getItem('quantgram-customcss') !== null) {
+      chkCustomCss.checked = localStorage.getItem('quantgram-customcss') === 'true';
+    }
+
+    webview.addEventListener('dom-ready', () => {
+      // Send initial configurations once DOM is ready
+      updateConfig();
+      sendThemeToWebview(document.body.className || 'teal-tech');
+      
+      // Request initial deep link if any
+      ipcRenderer.send('request-initial-deeplink');
+    });
+
+    // Sync compact mode class
+    ipcRenderer.on('quantgram-compact-status', (event, enabled) => {
+      if (enabled) {
+        document.body.classList.add('quantgram-compact');
+      } else {
+        document.body.classList.remove('quantgram-compact');
+      }
+    });
+
+    // Deep Link Navigation Handler
+    ipcRenderer.on('quantgram-open-deeplink', (event, targetUrl) => {
+      if (webview) {
+        webview.setAttribute('src', targetUrl);
+      }
+    });
+
+
+
+
+    // Endpoint switching
+    const btnEndpointA = document.getElementById('btn-endpoint-a');
+    const btnEndpointK = document.getElementById('btn-endpoint-k');
+
+    const changeEndpoint = (btnActive, btnInactive, url) => {
+      if (!btnActive.classList.contains('active')) {
+        btnActive.classList.add('active');
+        btnInactive.classList.remove('active');
+        splashScreen.style.display = 'flex';
+        splashScreen.classList.remove('fade-out');
+        splashProgress.style.width = '10%';
+        webview.setAttribute('src', url);
+      }
+    };
+
+    btnEndpointA.addEventListener('click', () => {
+      changeEndpoint(btnEndpointA, btnEndpointK, 'https://web.telegram.org/a/');
+    });
+
+    btnEndpointK.addEventListener('click', () => {
+      changeEndpoint(btnEndpointK, btnEndpointA, 'https://web.telegram.org/k/');
+    });
+
+    // Developer actions
+    document.getElementById('btn-dev-tools').addEventListener('click', () => {
+      webview.openDevTools();
+    });
+
+    document.getElementById('btn-clear-cache').addEventListener('click', () => {
+      const session = webview.getWebContentsId();
+      if (confirm('Are you sure you want to clear the storage cache and reload the application?')) {
+        splashScreen.style.display = 'flex';
+        splashScreen.classList.remove('fade-out');
+        splashProgress.style.width = '15%';
+        webview.reloadIgnoringCache();
+      }
+    });
+
+  </script>
+</body>
+</html>
